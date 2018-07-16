@@ -11,19 +11,6 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AdvertController extends Controller
 {
-  public function index_hello_world_Action()
-  {
-    $content = $this->get('templating')->render('OCPlatformBundle:Advert:index.html.twig', array('nom' => 'winzou'));
-    
-    return new Response($content);
-  }
-
-  public function index_bye_world_Action()
-  {
-    $content = $this->get('templating')->render('OCPlatformBundle:Advert:index.html.1.twig', array('nom' => 'winzou'));
-    
-    return new Response($content);
-  }
 
   public function indexAction($page)
   {
@@ -98,6 +85,23 @@ class AdvertController extends Controller
             "On pourrait afficher l'annonce correspondant au
             slug '".$slug."', créée en ".$year." et au format ".$format."."
         );
+    }
+  
+    public function menuAction()
+    {
+      // On fixe en dur une liste ici, bien entendu par la suite
+      // on la récupérera depuis la BDD !
+      $listAdverts = array(
+        array('id' => 2, 'title' => 'Recherche développeur Symfony'),
+        array('id' => 5, 'title' => 'Mission de webmaster'),
+        array('id' => 9, 'title' => 'Offre de stage webdesigner')
+      );
+  
+      return $this->render('OCPlatformBundle:Advert:menu.html.twig', array(
+        // Tout l'intérêt est ici : le contrôleur passe
+        // les variables nécessaires au template !
+        'listAdverts' => $listAdverts
+      ));
     }
 
 

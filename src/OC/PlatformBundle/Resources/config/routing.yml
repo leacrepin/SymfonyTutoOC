@@ -43,10 +43,3 @@ oc_platform_view_slug:
         year:   \d{4} #quatre chiffres à la suite
         format: html|xml
 
-hello_the_world:
-    path:     /hello-world
-    defaults: { _controller: OCPlatformBundle:Advert:index_hello_world_ }
-    
-bye_the_world:
-    path:     /byebye-world
-    defaults: { _controller: OCPlatformBundle:Advert:index_bye_world_ }
