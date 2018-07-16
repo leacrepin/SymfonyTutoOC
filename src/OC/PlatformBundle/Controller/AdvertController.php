@@ -41,12 +41,13 @@ class AdvertController extends Controller
     return $this->render('OCPlatformBundle:Advert:index.html.2.twig');
   }
 
-  public function viewAction($id)
+  public function viewAction($id, Request $request)
   {
+    $tag = $request->query->get('tag');
     // Ici, on récupérera l'annonce correspondante à l'id $id
 
     return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
-      'id' => $id
+      'id' => $id, 'tag' => $tag
     ));
   }
 
@@ -98,5 +99,6 @@ class AdvertController extends Controller
             slug '".$slug."', créée en ".$year." et au format ".$format."."
         );
     }
+
 
 }
